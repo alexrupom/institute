@@ -2,15 +2,14 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.8'
-gem 'rails', '~> 6.0.5'
+gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
-gem 'bootsnap', '>= 1.4.2', require: false
-
+gem 'rails', '~> 6.0.5'
+gem 'tzinfo-data'
 
 group :development, :test do
   gem 'byebug'
-  gem 'rubocop'
 end
 
 group :development do
@@ -20,11 +19,8 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
   gem 'database_cleaner'
-  gem 'rspec_junit_formatter' 
+  gem 'factory_bot_rails'
+  gem 'rspec_junit_formatter'
+  gem 'rspec-rails'
 end
-
-
-gem 'tzinfo-data'
