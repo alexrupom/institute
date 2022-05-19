@@ -1,0 +1,35 @@
+name: Tests
+
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:10.8
+        env:
+          POSTGRES_USER: test
+          POSTGRES_DB: test
+          POSTGRES_PASSWORD: 'test'
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          # Not needed with a .ruby-version file
+          ruby-version: 2.7
+          # runs 'bundle install' and caches installed gems automatically
+          bundler-cache: true
+
+      - name: Create DB
+        env:
+          DATABASE_URL: postgres://test:test@localhost/test
+        run: |
+          bin/rails db:prepare
+      - name: Run tests
+        run: |
+          bundle exec rake knapsack_pro:queue:rspec
