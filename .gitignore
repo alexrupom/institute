@@ -3,6 +3,7 @@
 !/log/.keep
 /tmp
 
+.rubocop-http*
 *.gem
 *.rbc
 /.config

@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'byebug'
+  gem 'rubocop'
 end
 
 group :development do

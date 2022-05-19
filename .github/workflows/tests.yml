@@ -20,9 +20,6 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          # Not needed with a .ruby-version file
-          ruby-version: 2.7
-          # runs 'bundle install' and caches installed gems automatically
           bundler-cache: true
 
       - name: Create DB
@@ -30,6 +27,7 @@ jobs:
           DATABASE_URL: postgres://test:test@localhost/test
         run: |
           bin/rails db:prepare
+
       - name: Run tests
         env:
          DATABASE_URL: postgres://test:test@localhost/test
