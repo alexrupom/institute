@@ -31,5 +31,10 @@ jobs:
         run: |
           bin/rails db:prepare
       - name: Run tests
+        env:
+         DATABASE_URL: postgres://test:test@localhost/test
         run: |
-          bundle exec rake knapsack_pro:queue:rspec
+         bundle exec rspec --profile 10 \
+                           --format RspecJunitFormatter \
+                           --out /tmp/test-results/rspec.xml \
+                           --format progress
