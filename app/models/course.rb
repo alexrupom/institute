@@ -1,8 +1,8 @@
 class Course < ApplicationRecord
-  has_many :course_authors
+  has_one :course_author
   has_many :course_talents
-  has_many :authors, through: :course_authors
+  has_one :author, through: :course_author
   has_many :talents, through: :course_talents
 
-  validates :title, presence: true
+  validates :title, :author, presence: true
 end
