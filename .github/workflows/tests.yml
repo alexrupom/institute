@@ -26,7 +26,7 @@ jobs:
         env:
           DATABASE_URL: postgres://test:test@localhost/test
         run: |
-          bin/rails db:test:prepare
+          bin/rails db:prepare
 
       - name: Run tests
         env:
